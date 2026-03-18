@@ -31,18 +31,6 @@ public class AILegalization extends BaseFactionPolicy {
     }
 
     @Override
-    public void applyPolicy() {
-        for (String string : factionsThatMadeItIllegal) {
-            Global.getSector().getFaction(string).setRelationship(Factions.PLAYER,-100);
-        }
-        AoTDFactionManager.getMarketsUnderPlayer().forEach(x->{
-            if(!x.hasCondition("aotd_ai_legal")){
-                x.addCondition("aotd_ai_legal");
-            }
-        });
-    }
-
-    @Override
     public boolean showInUI() {
         return AoTDFactionManager.getInstance().getEffectiveLevel()>=5;
     }
